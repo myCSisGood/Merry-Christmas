@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="class.css">
+	<title>HW4</title>
+</head>
+<body>
+	<div class="c3">
+		<h1>Guessing Game</h1>
+		<form action="#">
+			<p>Your Guess (1-100)</p>
+			<input type="text" id="num" class="c4">
+			<p>
+				<input type="button" id="press" onclick="play()" value="PLAY">
+			</p>
+		</form>
+		<div id="result">
+			<div class="c1">Result</div>
+		</div>
+
+	</div>
+
+	<script type="text/javascript">
+		var answer = Math.floor((Math.random()*100 )+ 1);
+		var max = 100;
+		var min = 1;
+		var i = 0;
+
+		function play(){
+			var number = document.getElementById("num").value;
+			if(number == answer){
+				alert("GAME　OVER!");
+				location.reload();
+			}else if(number < answer){
+				min = number;
+				i++;
+				write();
+				document.getElementById("number").value = " ";
+			}else{
+				max = number;
+				i++;
+				write();
+				document.getElementById("number").value = " ";
+			}
+
+		function write(){
+				var newLine = document.createElement("div");
+				var textNode = document.createTextNode(min +"~"+max);
+				newLine.appendChild(textNode);
+				if (i%2==1){
+					newLine.setAttribute("class","c1");
+				}else{
+					newLine.setAttribute("class","c2");
+				}
+				document.getElementById("result").appendChild(newLine);
+			}
+
+		
+		}
+	</script>
+</body>
+</html>
